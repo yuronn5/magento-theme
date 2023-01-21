@@ -1,0 +1,70 @@
+//
+//  Fonts
+//  _____________________________________________
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .lib-font-face(
+        @family-name: 'Monument Extended',
+        @font-path: '@{baseDir}fonts/monument-extended/PPMonumentExtended-Regular',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: 'Monument Extended',
+        @font-path: '@{baseDir}fonts/monument-extended/PPMonumentExtended-Black',
+        @font-weight: 700,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    h1, h2, h3, h4, h5, h6 {
+        .lib-css(font-family, @font-family__accent);
+        .lib-css(font-weight, @font-weight__regular);
+    }
+
+    h1 {
+        .lib-font-size(@font-size__h1-heading);
+
+        &.subheading {
+            .lib-font-size(@font-size__m);
+        }
+    }
+
+    h2 {
+        .lib-font-size(@font-size__h2-heading);
+
+        &.subheading {
+            .lib-font-size(@font-size__s);
+        }
+    }
+
+    h3 {
+        .lib-font-size(@font-size__h3-heading);
+
+        &.subheading {
+            .lib-font-size(@font-size__xs);
+        }
+    }
+
+    h4 {
+        .lib-font-size(@font-size__xxl);
+
+        &.subheading {
+            .lib-font-size(@font-size__xxs);
+        }
+    }
+
+    h5 {
+        .lib-font-size(@font-size__xl);
+    }
+
+    h6 {
+        .lib-font-size(@font-size__l);
+    }
+}
