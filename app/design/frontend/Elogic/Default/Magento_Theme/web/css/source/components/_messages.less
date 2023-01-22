@@ -1,0 +1,77 @@
+//
+//  Page Messages
+//  ---------------------------------------------
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .page.messages {
+        .message.success {
+            .lib-css(color, @color-green__essential);
+            .lib-css(background, @color-message-success);
+            padding-left: @indent__base;
+            margin-bottom: @indent__xs*3;
+
+            a {
+                .lib-css(color, @color-green__essential);
+                text-decoration: underline;
+            }
+
+            > *:first-child:before {
+                display: none;
+            }
+        }
+
+        .message.error {
+            .lib-css(color, @error__color);
+            .lib-css(background, @color-message-error);
+            margin-bottom: @indent__xs*3 0;
+
+            a {
+                .lib-css(color, @error__color);
+                text-decoration: underline;
+            }
+
+            > *:first-child:before {
+                background: url('@{baseDir}images/icons/attention.svg') no-repeat;
+                content: '';
+                width: 23px;
+                height: 23px;
+                left: 13px;
+            }
+        }
+    }
+
+    .catalog-product-view {
+        .page.messages {
+            .message.error,
+            .message.success {
+                margin-top: @indent__xs*3;
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page.messages {
+        .message.error,
+        .message.success {
+            margin-bottom: @indent__base;
+        }
+    }
+
+    .catalog-product-view {
+        .page.messages {
+            .message.error,
+            .message.success {
+                margin-top: @indent__base;
+            }
+        }
+    }
+}

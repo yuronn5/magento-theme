@@ -1,0 +1,302 @@
+//
+//  Forms
+//  _____________________________________________
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .fieldset {
+        .lib-form-fieldset();
+
+        &:last-child {
+            margin-bottom: @indent__base;
+        }
+
+        > .field,
+        > .fields > .field {
+            .lib-form-field();
+            &.no-label {
+                > .label {
+                    .lib-visually-hidden();
+                }
+            }
+
+            .label {
+                .lib-font-size(@form-element-label__font-size);
+                .lib-css(color, @form-element-label__color);
+                .lib-css(font-weight, @form-element-label__font-weight);
+            }
+
+            &.choice {
+                .label {
+                    display: inline;
+                    font-weight: normal;
+                    margin: 0;
+                }
+            }
+
+            .label {
+                .column:not(.main) & {
+                    font-weight: normal;
+                }
+            }
+
+            .field.choice {
+                margin-bottom: @indent__s;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .legend + .fieldset,
+    .legend + div {
+        clear: both;
+    }
+
+    .legend {
+        > span {
+            margin-right: @indent__xs;
+        }
+    }
+
+    fieldset.field {
+        border: 0;
+        padding: 0;
+    }
+
+    .field {
+        &.date {
+            .time-picker {
+                display: inline-block;
+                margin-top: @indent__s;
+                white-space: nowrap;
+            }
+        }
+
+        .message {
+            &.warning {
+                margin-top: @indent__s;
+            }
+        }
+    }
+
+    .select-styling() {
+        .lib-css(appearance, none, 1);
+        appearance: none;
+        background-size: 30px 60px;
+        text-indent: .01em;
+        text-overflow: '';
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    select {
+        .select-styling();
+        background-position: 92% 48%;
+        background-size: 12px !important;
+        width: auto;
+    }
+
+    select.admin__control-multiselect {
+        height: auto;
+    }
+
+    .field-error,
+    div.mage-error {
+        margin-top: 7px;
+    }
+
+    .field-error {
+        .lib-form-validation-note();
+    }
+
+    .product-options-wrapper {
+        .date {
+            &.required {
+                div[for*='options'] {
+                    &.mage-error {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+
+    //  TEMP
+
+    .field .tooltip {
+        .lib-tooltip(right);
+        .tooltip-content {
+            min-width: 200px;
+            white-space: normal;
+        }
+    }
+
+    input:focus ~ .tooltip .tooltip-content,
+    select:focus ~ .tooltip .tooltip-content {
+        display: block;
+    }
+
+    ._has-datepicker {
+        ~ .ui-datepicker-trigger {
+            .lib-button-reset();
+            .lib-icon-font(
+            @_icon-font-content: @icon-calendar,
+            @_icon-font-color: @primary__color__lighter,
+            @_icon-font-size: @icon-calendar__font-size,
+            @_icon-font-line-height: @icon-calendar__font-size,
+            @_icon-font-display: block,
+            @_icon-font-text-hide: true
+            );
+            display: inline-block;
+            margin-top: -4px;
+            vertical-align: middle;
+
+            &:focus {
+                box-shadow: none;
+                outline: 0;
+            }
+        }
+    }
+
+    .field.date,
+    .field-dob {
+        ._has-datepicker {
+            &:extend(.abs-field-date-input all);
+        }
+    }
+
+    //
+    //  Sidebar forms
+    //  ---------------------------------------------
+
+    .sidebar {
+        .fieldset {
+            margin: 0;
+
+            > .field:not(.choice) >,
+            .fields > .field {
+                &:not(:last-child) {
+                    margin: 0 0 @form-field__vertical-indent;
+                }
+
+                .label {
+                    margin: 0 0 4px;
+                    padding: 0 0 @indent__xs;
+                    text-align: left;
+                    width: 100%;
+                }
+
+                .control {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    //
+    //  Radio buttons / checkboxes
+    //  ---------------------------------------------
+
+    .field.choice {
+        .lib-vendor-prefix-display();
+        position: relative;
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: @indent__base;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+
+            & + label {
+                &:before,
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    border-radius: 50%;
+                    transition: 0.3s;
+                }
+
+                &:before {
+                    .lib-css(border, 1px solid @primary__color);
+                    height: 20px;
+                    width: 20px;
+                    top: 0;
+                    left: 0;
+                }
+
+                &:after {
+                    .lib-css(background, @primary__color);
+                    height: 10px;
+                    width: 10px;
+                    top: 6px;
+                    left: 6px;
+                    opacity: 0;
+                }
+            }
+
+            &:checked + label:after {
+                opacity: 1;
+                transition: 0.3s;
+            }
+        }
+    }
+
+
+    //
+    //  Checkboxes
+    //  ---------------------------------------------
+
+    .field.choice {
+        input[type="checkbox"] {
+            margin-right: @indent__base;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+
+            & + label {
+                &:before,
+                &:after {
+                    border-radius: 0;
+                }
+
+                &:before {
+                    .lib-css(border-color, @border-color__base);
+                }
+
+                &:after {
+                    width: 20px;
+                    height: 20px;
+                    top: 1px;
+                    left: 1px;
+                }
+            }
+
+            &:checked + label:after {
+                .lib-css(background, @primary__color);
+                background: url('@{baseDir}images/check.svg'), @primary__color;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 15px;
+                transition: 0.3s;
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

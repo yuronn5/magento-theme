@@ -1,0 +1,36 @@
+//
+//  Layout
+//  ---------------------------------------------
+
+@total-columns: 24;
+
+//  Variables for layout columns
+@layout-column__sidebar-width: 5;
+@layout-column-main__sidebar-offset: @indent__xl;
+@layout-column-main__sidebar-width: 25%;
+@layout-column-main__grid-width: 75%;
+@layout-column-main__sidebar-mobile-width: 100%;
+
+//  Checkout columns width
+@layout-column-checkout__width-left: 6;
+
+//  Widths
+@layout__max-width: 1260px;
+@layout-indent__width: 20px; // Column padding
+@layout__width-xs-indent: 15px; // Mobile column padding
+
+//  Variables for layout columns
+@layout-column__width: @total-columns;
+@layout-column__sidebar-width: 3;
+@layout-column__left-width: @layout-column__sidebar-width;
+@layout-column__right-width: @layout-column__sidebar-width;
+
+//  Variables for layout columns depending on layout used
+@layout-column-main__width-1: 100%;
+@layout-column-main__width-2-left: @layout-column__width - @layout-column__left-width;
+@layout-column-main__width-2-right: @layout-column__width - @layout-column__right-width;
+@layout-column-main__width-3: @layout-column__width - @layout-column__left-width - @layout-column__right-width;
+
+//  Checkout columns width
+@layout-column-checkout__width-left: 3;
+@layout-column-checkout__width-main: @total-columns - @layout-column-checkout__width-left;

@@ -1,0 +1,35 @@
+//
+//  Icons
+//  ---------------------------------------------
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .icon-arrow {
+        transition: 0.3s;
+
+        &--up {
+            transform: rotate(-90deg);
+        }
+
+        &--right {
+            [aria-expanded="true"] & {
+                transform: rotate(90deg);
+            }
+        }
+
+        &--down {
+            transform: rotate(90deg);
+
+            [aria-expanded="true"] & {
+                transform: rotate(-90deg);
+            }
+        }
+
+        &--left {
+            transform: rotate(180deg);
+        }
+    }
+}
